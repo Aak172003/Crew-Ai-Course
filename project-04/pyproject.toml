@@ -1,0 +1,23 @@
+[project]
+name = "project-04"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aakashmoondive502", email = "aakash.prajapati@moondive.co" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "crewai",
+    "litellm>=1.60.2",
+]
+
+[project.scripts]
+project-04 = "project_04:main"
+simple-flow = "project_04.main:kickoff"
+chaining-prompt = "project_04.chainprompt:kickoff"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
