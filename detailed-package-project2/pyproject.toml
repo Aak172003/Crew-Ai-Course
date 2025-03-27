@@ -1,0 +1,24 @@
+[project]
+name = "detailed-package-project2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aakashmoondive502", email = "aakash.prajapati@moondive.co" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+detailed-package-project2 = "detailed_package_project2:main"
+fun2 = "detailed_package_project2:fun2"
+fun3 = "detailed_package_project2:fun3"
+
+
+hello_fun01 = "detailed_package_project2.hello:static_function"
+nested_file_calling = "nested.nestedf1.myfile:nested_function_calling"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,20 @@
+[project]
+name = "lite-llm-project3"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aakashmoondive502", email = "aakash.prajapati@moondive.co" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "litellm>=1.64.1",
+]
+
+[project.scripts]
+lite-llm-project3 = "lite_llm_project3:main"
+gemini-lite-llm = "lite_llm_project3.hello:call_gemini"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
