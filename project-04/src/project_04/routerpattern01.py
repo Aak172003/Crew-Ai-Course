@@ -43,7 +43,7 @@ class RouteFlow(Flow):
         result = completion(
             model="gemini/gemini-2.0-flash-exp",
             api_key=API_KEY,
-            messages=[{"content": f"Write some historical moments about {city} city.", "role": "user"}],
+            messages=[{"content": f"Write some fun fact about {city} city.", "role": "user"}],
         )
 
         fun_fact = result['choices'][0]['message']['content']

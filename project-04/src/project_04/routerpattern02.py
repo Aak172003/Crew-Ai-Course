@@ -1,7 +1,6 @@
 import random
 from crewai.flow.flow import Flow, listen, router, start
 from pydantic import BaseModel
-
 class ExampleState(BaseModel):
     success_flag: bool = False
 
@@ -31,8 +30,5 @@ class RouterFlow(Flow[ExampleState]):
 
 def kickoff():
     flow = RouterFlow()
-
     print("flow ----- ", flow)
-    # Use `run()` instead of `kickoff()`
-
     flow.kickoff() 
