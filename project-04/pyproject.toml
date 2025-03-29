@@ -17,6 +17,10 @@ project-04 = "project_04:main"
 simple-flow = "project_04.main:kickoff"
 chaining-prompt = "project_04.chainprompt:kickoff"
 
+route_run = "project_04.routerpattern01:kickoff"
+route_plot = "project_04.routerpattern01:plot"
+
+route_run02 = "project_04.routerpattern02:kickoff"
 
 [build-system]
 requires = ["hatchling"]
