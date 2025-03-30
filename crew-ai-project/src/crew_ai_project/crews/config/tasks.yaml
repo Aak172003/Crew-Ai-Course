@@ -1,7 +1,0 @@
-describe_topic:
-  description: >
-    We are mentoring to create the best agentic AI Engineers .Today we are teaching about {topic}   
-  expected_output: >
-    The students will have mastered the topic {topic} 
-  agent: sir_zia
-

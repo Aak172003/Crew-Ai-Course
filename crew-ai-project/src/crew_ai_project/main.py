@@ -3,7 +3,7 @@ from litellm import completion
 from dotenv import load_dotenv , find_dotenv
 
 # Import the crew
-from crew_ai_project.crews.teaching_crew.teachingcrew import TeachingCrew
+from .crews.teaching_crew.teachingcrew import TeachingCrew
 
 # Here we load the environment variables from the .env file
 _:bool = load_dotenv(find_dotenv())
@@ -29,10 +29,16 @@ class PanaFlow(Flow):
     def generate_content(self):
         print(f"Step -2: Generate Content: {self.state['topic']}")
         # Create the crew
-        teaching_crew = TeachingCrew()
-        crew = teaching_crew.build_crew(topic=self.state['topic'])
-        result = crew.kickoff()
-        # Run the crew  
+        result = (
+            TeachingCrew()
+            .crew()
+            .kickoff(
+                inputs={"topic": self.state['topic']}
+                )
+        )
+
+        print("Poem generated", result.raw)
+        # self.state.poem = result.raw
 
         self.state['content'] = result.raw
         print(result.raw)
