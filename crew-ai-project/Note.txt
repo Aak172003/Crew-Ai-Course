@@ -1,0 +1,3 @@
+In this Project use llm to generate trending topic 
+Then after use crew to generate contenet about generated topic
+Then save generated content into a md file 
