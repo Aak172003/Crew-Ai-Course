@@ -8,7 +8,6 @@ from .crews.teaching_crew.teachingcrew import TeachingCrew
 # Here we load the environment variables from the .env file
 _:bool = load_dotenv(find_dotenv())
 
-
 class PanaFlow(Flow):
     @start()
     def generate_topic(self):
@@ -37,9 +36,7 @@ class PanaFlow(Flow):
                 )
         )
 
-        print("Poem generated", result.raw)
-        # self.state.poem = result.raw
-
+        print("Content generated", result.raw)
         self.state['content'] = result.raw
         print(result.raw)
     
