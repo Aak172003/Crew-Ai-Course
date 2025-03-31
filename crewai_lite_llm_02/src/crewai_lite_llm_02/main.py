@@ -1,59 +1,28 @@
 #!/usr/bin/env python
-from random import randint
-
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-API_KEY = os.getenv("GOOGLE_API_KEY")
-
-from pydantic import BaseModel
-
 from crewai.flow.flow import Flow, listen, start
-
-from .crews.poem_crew.poem_crew import PoemCrew
-
-
-class PoemState(BaseModel):
-    sentence_count: int = 1
-    poem: str = ""
+from dotenv import load_dotenv , find_dotenv
+from .crews.dev_crew.dev_crew import DevCrew
 
 
-class PoemFlow(Flow[PoemState]):
+# Here we load the environment variables from the .env file
+_:bool = load_dotenv(find_dotenv())
 
+class DevFlow(Flow):
     @start()
-    def generate_sentence_count(self):
-        print("Generating sentence count")
-        self.state.sentence_count = randint(1, 5)
-
-    @listen(generate_sentence_count)
-    def generate_poem(self):
-        print("Generating poem")
+    def run_dev_crew(self):
+        print("Running dev crew")
         result = (
-            PoemCrew()
+            DevCrew()
             .crew()
-            .kickoff(inputs={"sentence_count": self.state.sentence_count})
+            .kickoff(
+                inputs={"problem_statement": "Write a python code for adding two numbers."}
+                )
         )
-
-        print("Poem generated", result.raw)
-        self.state.poem = result.raw
-
-    @listen(generate_poem)
-    def save_poem(self):
-        print("Saving poem")
-        with open("poem.txt", "w") as f:
-            f.write(self.state.poem)
+        print("Dev crew output", result.raw)
+        return result.raw
 
 
 def kickoff():
-    poem_flow = PoemFlow()
-    poem_flow.kickoff()
-
-
-def plot():
-    poem_flow = PoemFlow()
-    poem_flow.plot()
-
-
-if __name__ == "__main__":
-    kickoff()
+    dev_flow = DevFlow()
+    result = dev_flow.kickoff()
+    print("Dev flow result", result)
