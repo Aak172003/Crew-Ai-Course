@@ -1,3 +1,5 @@
+# We need to add > when we are trying to type multiline
+
 junior_python_developer:
   role: >
     Junior Python Developer
@@ -8,7 +10,8 @@ junior_python_developer:
   backstory: >
     You have 3 years of experience in python development and you are a junior python developer.
     you know how to use flask , django and fastapi.
-
+  llm: ollama/deepseek-r1:1.5b  
+  base_url: http://localhost:11434
 
 senior_python_developer:
   role: >

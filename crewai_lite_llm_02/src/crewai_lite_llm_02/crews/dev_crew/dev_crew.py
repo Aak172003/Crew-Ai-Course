@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+# But by default Gemini is connected to the crew . 
 # This is how we can connect with Multi LLM
 llm_1 = LLM(
     model="ollama/deepseek-r1:1.5b",
@@ -39,7 +40,7 @@ class DevCrew:
         print("inside junior_python_developer agent")
         return Agent(
             config=self.agents_config["junior_python_developer"],
-            llm=llm_1
+            # llm=llm_1
         )
     
         # define the agents
@@ -77,5 +78,9 @@ class DevCrew:
         return Crew(
             agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator
+            # If we want to run the crew in parallel we can use process=Process.parallel
+            # in this sequence will be matter 
+            
+            # process=Process.sequential,
             verbose=True,
         )
