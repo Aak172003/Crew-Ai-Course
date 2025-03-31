@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 from crewai.flow.flow import Flow, listen, start
 from dotenv import load_dotenv , find_dotenv
-from .crews.dev_crew.dev_crew import DevCrew
-
+from .crews.dev_crew.dev_crew_02 import DevCrew
 
 # Here we load the environment variables from the .env file
 _:bool = load_dotenv(find_dotenv())
