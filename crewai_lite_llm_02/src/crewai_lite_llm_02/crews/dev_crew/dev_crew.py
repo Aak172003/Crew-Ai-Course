@@ -1,8 +1,29 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+
+
+# Connect with Multi LLM
+from crewai import LLM
+
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+# This is how we can connect with Multi LLM
+llm_1 = LLM(
+    model="ollama/deepseek-r1:1.5b",
+    base_url="http://localhost:11434"
+)
+
+llm_2 = LLM(
+    model="gemini/gemini-2.0-flash"
+)
+
+
+
+
 
 @CrewBase
 class DevCrew:  
@@ -17,7 +38,8 @@ class DevCrew:
     def junior_python_developer(self) -> Agent:
         print("inside junior_python_developer agent")
         return Agent(
-            config=self.agents_config["junior_python_developer"]
+            config=self.agents_config["junior_python_developer"],
+            llm=llm_1
         )
     
         # define the agents
@@ -25,7 +47,8 @@ class DevCrew:
     def senior_python_developer(self) -> Agent:
         print("inside senior_python_developer agent")
         return Agent(
-            config=self.agents_config["senior_python_developer"]
+            config=self.agents_config["senior_python_developer"],
+            llm=llm_2
         )
     
 

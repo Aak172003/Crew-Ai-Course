@@ -14,6 +14,10 @@ plot = "crewai_lite_llm_02.main:plot"
 
 run_litellm_flow = "crewai_lite_llm_02.main1:run_litellm_flow"
 
+multi-crew-kickoff = "crewai_lite_llm_02.main2:kickoff"
+multi-crew-plot = "crewai_lite_llm_02.main2:plot"
+
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

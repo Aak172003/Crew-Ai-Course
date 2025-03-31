@@ -4,7 +4,8 @@ import os
 from dotenv import load_dotenv , find_dotenv
 
 # Here we load the environment variables from the .env file
-_:bool = load_dotenv(find_dotenv())
+result:bool = load_dotenv(find_dotenv())
+print("Environment variables loaded:", result)
 
 # Get the model from the .env variable file
 MODEL = os.getenv("MODEL")
@@ -17,8 +18,6 @@ class LitellmFlow(Flow):
             model=MODEL,
             messages=[{"role": "user", "content": "Hello, how are you?"}]
         )
-        print("output ::::::::; ", output)
-
         return output['choices'][0]['message']['content']
 
 
