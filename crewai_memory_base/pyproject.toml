@@ -1,0 +1,27 @@
+[project]
+name = "crewai_memory_base"
+version = "0.1.0"
+description = "crewai-memory-base using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0",
+    "google-generativeai>=0.8.4",
+]
+
+[project.scripts]
+kickoff = "crewai_memory_base.main:kickoff"
+plot = "crewai_memory_base.main:plot"
+
+
+knowledge-crew-kickoff = "crewai_memory_base.knowledgecrew:kickoff"
+
+memory_kickoff = "crewai_memory_base.memory:memory_kickoff"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/crewai_memory_base"]
